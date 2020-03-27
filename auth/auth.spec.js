@@ -54,20 +54,26 @@ describe('server.js endpoints', () => {
                         "password": "notapassword"
                     })
                     .expect(401);
-            });
-
-        // it.todo(' should return 500 if username & password NOT in body', async () => {
-        //     return request(server)
-        //         .post('/api/auth/register')
-        //         .send({ 
-        //             "username": "kyle2",                    
-        //         })
-        //         .expect(500);
-        // })
+            });        
 
         });
 
-    });
+        describe('GET /api/jokes', () => {
+            it(' should return 401 if not logged in', async () => {
+                return request(server)
+                    .get('/api/jokes')                    
+                    .expect(401);
+            })
+
+            it(' should return 200 when logged in', async () => {
+                return request(server)
+                    .get('/api/jokes')
+                    .set('Authorization','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imx1aXMiLCJpYXQiOjE1ODUzMjkzNDgsImV4cCI6MTU4NTMzMTE0OH0.wtyvwNqS3LNPdqsaLDnQE_7JURN9CyZBcz2h9mdXdEw')             
+                    .expect(200);
+            })
+        });
+
+})
     
 
 
