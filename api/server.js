@@ -29,7 +29,7 @@ server.use('/api/auth', authRouter);
 server.use('/api/jokes', authenticate, jokesRouter);
 
 server.get('/', (req, res) => {
-    res.json({serverStatus: "🏃‍♂️🏃‍♂️🏃‍♂️🏃‍♂️🏃‍♂️"});
+    res.status(200).json({serverStatus: "🏃‍♂️🏃‍♂️🏃‍♂️🏃‍♂️🏃‍♂️"});
 })
 
 module.exports = server;

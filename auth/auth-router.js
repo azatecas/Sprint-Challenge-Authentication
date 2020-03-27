@@ -28,9 +28,9 @@ router.post('/register', (req, res) => {
     .add(body)
     .then(user => {
         console.log('userINFO', body);
-        res.status(200).json(user);
+        res.status(201).json({user: user, hello: body.username});
     })
-    .catch(err => res.send({errorMessage: err.message}))
+    .catch(err => res.status(500).json({errorMessage: err.message}))
 });
 
 router.post('/login', (req, res) => {
